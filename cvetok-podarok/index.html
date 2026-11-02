@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Цветок подарок — демо</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="robots" content="noindex">
+<meta name="description" content="Салон цветов «Цветок подарок» на Щербакова, 145в в Екатеринбурге. Открыто круглосуточно. Букеты, композиции, комнатные растения, доставка 9:00–21:00.">
+<meta property="og:title" content="Цветы круглосуточно на Уктусе — Цветок подарок">
+<meta property="og:description" content="Букеты, композиции и комнатные растения. Щербакова, 145в. Открыто 24/7, доставка по Екатеринбургу.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cg fill='%23C2365F'%3E%3Cellipse cx='16' cy='9' rx='5' ry='8'/%3E%3Cellipse cx='16' cy='23' rx='5' ry='8'/%3E%3Cellipse cx='9' cy='16' rx='8' ry='5'/%3E%3Cellipse cx='23' cy='16' rx='8' ry='5'/%3E%3C/g%3E%3Ccircle cx='16' cy='16' r='4' fill='%232F5D4A'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Onest:wght@400;500;600;700&display=swap">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Florist",
+  "name": "Цветок подарок",
+  "description": "Салон цветов: букеты, композиции, комнатные растения, сухоцветы, мягкие игрушки",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "улица Щербакова, 145в, 1 этаж",
+    "addressLocality": "Екатеринбург",
+    "postalCode": "620076",
+    "addressCountry": "RU"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 56.767814, "longitude": 60.670088 },
+  "openingHours": "Mo-Su 00:00-23:59",
+  "paymentAccepted": "Наличные, банковская карта, оплата по QR-коду",
+  "telephone": "[уточнить]"
+}
+</script>
+<style>
+/* Layout: «витрина, открытая всю ночь» — светлая страница с ночной полосой-акцентом про режим 24/7, асимметричный hero с живым цветком */
+:root{
+  --bg:#FBF8F9; --surface:#FFFFFF; --ink:#1C2320; --muted:#5B6661;
+  --line:#E7DFE2; --peony:#C2365F; --peony-ink:#FFFFFF; --leaf:#2F5D4A;
+  --leaf-soft:#E6EFEA; --night:#17201C; --night-ink:#F3EEF0; --petal-soft:#F7E4EA;
+  --f-display:"Tenor Sans","Trebuchet MS",Georgia,serif;
+  --f-body:"Onest",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --r:14px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#121715; --surface:#1A211E; --ink:#EEF0EE; --muted:#A8B2AD; --line:#2A3430;
+  --peony:#E2668A; --peony-ink:#1A0E12; --leaf:#7FB59A; --leaf-soft:#1F2D27;
+  --night:#0B0F0D; --night-ink:#F3EEF0; --petal-soft:#2A1B21; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121715; --surface:#1A211E; --ink:#EEF0EE; --muted:#A8B2AD; --line:#2A3430;
+  --peony:#E2668A; --peony-ink:#1A0E12; --leaf:#7FB59A; --leaf-soft:#1F2D27;
+  --night:#0B0F0D; --night-ink:#F3EEF0; --petal-soft:#2A1B21; color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.6;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--peony);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;line-height:1.15;text-wrap:balance;margin:0}
+h2{font-size:clamp(30px,4.2vw,44px)}
+h3{font-size:21px}
+.eyebrow{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--leaf);font-weight:600}
+section{padding-block:clamp(64px,9vw,104px)}
+.sec-head{display:grid;gap:12px;margin-bottom:40px;max-width:640px}
+.sec-head p{margin:0;color:var(--muted)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:999px;font-weight:600;font-size:16px;text-decoration:none;border:1.5px solid transparent;transition:transform .15s,background .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--peony);color:var(--peony-ink)}
+.btn-ghost{border-color:var(--ink);color:var(--ink)}
+.btn svg{width:20px;height:20px;flex:none}
+
+/* demo bar */
+.demo{background:var(--night);color:var(--night-ink);font-size:13px;text-align:center}
+.demo .wrap{padding-block:8px}
+
+/* header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--bg)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:68px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--f-display);font-size:21px}
+.logo svg{width:30px;height:30px}
+.menu{display:flex;gap:28px;list-style:none;margin:0;padding:0}
+.menu a{text-decoration:none;color:var(--muted);font-weight:500}
+.menu a:hover{color:var(--ink)}
+.nav .btn{min-height:44px;padding:0 18px;font-size:15px}
+.burger{display:none;background:none;border:0;color:var(--ink);padding:8px;cursor:pointer}
+.burger svg{width:28px;height:28px}
+@media (max-width:820px){
+  .menu{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;gap:0;background:var(--surface);border-bottom:1px solid var(--line);padding:8px max(20px,env(safe-area-inset-right,0px)) 16px max(20px,env(safe-area-inset-left,0px))}
+  .menu.open{display:flex}
+  .menu a{display:block;padding:12px 0;font-size:18px;color:var(--ink)}
+  .burger{display:block}
+  .nav .btn span{display:none}
+  .nav .btn{width:44px;padding:0}
+}
+
+/* hero */
+.hero{padding-block:clamp(40px,7vw,88px) clamp(56px,8vw,96px)}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(40px,6.4vw,72px);letter-spacing:-.01em}
+.hero h1 em{font-style:normal;color:var(--peony)}
+.hero p.lead{font-size:clamp(17px,1.6vw,20px);color:var(--muted);max-width:520px;margin:22px 0 32px}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.facts{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:36px;padding-top:24px;border-top:1px solid var(--line);font-size:15px}
+.facts div{display:flex;align-items:center;gap:8px;color:var(--muted)}
+.facts b{color:var(--ink);font-weight:600}
+.facts svg{width:18px;height:18px;color:var(--leaf)}
+.bloom{position:relative;aspect-ratio:1;max-width:460px;width:100%;justify-self:end;border-radius:50% 50% 24px 50%;background:var(--petal-soft);overflow:hidden}
+.bloom canvas{position:absolute;inset:0;width:100%;height:100%}
+.bloom .tag{position:absolute;left:18px;bottom:18px;background:var(--night);color:var(--night-ink);border-radius:999px;padding:8px 16px;font-size:14px;font-weight:600;display:flex;gap:8px;align-items:center}
+.bloom .tag i{width:8px;height:8px;border-radius:50%;background:#5BD08A;box-shadow:0 0 0 4px rgba(91,208,138,.25)}
+@media (max-width:820px){.hero-grid{grid-template-columns:1fr}.bloom{justify-self:start;max-width:340px}}
+
+/* night strip */
+.night{background:var(--night);color:var(--night-ink);padding-block:clamp(48px,7vw,72px)}
+.night-grid{display:grid;grid-template-columns:auto 1fr;gap:32px 48px;align-items:center}
+.clock{font-family:var(--f-display);font-size:clamp(56px,10vw,120px);line-height:1;font-variant-numeric:tabular-nums;color:var(--peony)}
+.night h2{font-size:clamp(26px,3.4vw,36px)}
+.night p{margin:12px 0 0;opacity:.8;max-width:560px}
+@media (max-width:700px){.night-grid{grid-template-columns:1fr}}
+
+/* assortment */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:28px;display:grid;gap:10px;align-content:start}
+.card .ic{width:48px;height:48px;border-radius:12px;background:var(--leaf-soft);color:var(--leaf);display:grid;place-items:center;margin-bottom:6px}
+.card .ic svg{width:24px;height:24px}
+.card p{margin:0;color:var(--muted);font-size:16px}
+.card .price{font-weight:600;color:var(--ink);font-size:15px;margin-top:4px}
+@media (max-width:900px){.cards{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.cards{grid-template-columns:1fr}}
+
+/* why */
+.why{background:var(--surface);border-block:1px solid var(--line)}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+.why-item{display:grid;gap:8px;align-content:start}
+.why-item .big{font-family:var(--f-display);font-size:34px;color:var(--leaf);line-height:1}
+.why-item p{margin:0;color:var(--muted);font-size:16px}
+@media (max-width:900px){.why-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:480px){.why-grid{grid-template-columns:1fr}}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;counter-reset:s;list-style:none;margin:0;padding:0}
+.steps li{counter-increment:s;padding-top:20px;border-top:2px solid var(--ink);display:grid;gap:8px}
+.steps li::before{content:counter(s);font-family:var(--f-display);font-size:28px;color:var(--peony)}
+.steps p{margin:0;color:var(--muted);font-size:16px}
+@media (max-width:760px){.steps{grid-template-columns:1fr}}
+
+/* reviews */
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+blockquote{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:28px;display:flex;flex-direction:column;gap:18px}
+blockquote p{margin:0;font-size:17px}
+blockquote footer{margin-top:auto;font-size:14px;color:var(--muted)}
+blockquote footer b{color:var(--ink);font-weight:600}
+.more{margin-top:28px}
+.more a{color:var(--leaf);font-weight:600}
+@media (max-width:900px){.reviews{grid-template-columns:1fr}}
+
+/* faq */
+.faq{max-width:780px;display:grid;gap:0}
+details{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;list-style:none;padding:22px 40px 22px 0;font-weight:600;font-size:18px;position:relative}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"";position:absolute;right:6px;top:50%;width:12px;height:12px;border-right:2px solid var(--peony);border-bottom:2px solid var(--peony);transform:translateY(-70%) rotate(45deg);transition:transform .2s}
+details[open] summary::after{transform:translateY(-30%) rotate(-135deg)}
+details p{margin:0 0 22px;color:var(--muted)}
+
+/* contacts */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.c-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:32px;display:grid;gap:22px;align-content:start}
+.c-row{display:grid;grid-template-columns:24px 1fr;gap:14px}
+.c-row svg{width:22px;height:22px;color:var(--leaf);margin-top:3px}
+.c-row small{display:block;color:var(--muted);font-size:14px}
+.c-row b{font-weight:600}
+.todo{background:var(--petal-soft);color:var(--peony);font-size:13px;padding:2px 8px;border-radius:6px;font-weight:600;white-space:nowrap}
+.mapbox{border-radius:var(--r);overflow:hidden;min-height:320px;background:var(--leaf-soft);position:relative;display:grid;place-items:center;text-align:center;padding:24px}
+.mapbox svg.grid{position:absolute;inset:0;width:100%;height:100%;color:var(--leaf);opacity:.18}
+.mapbox .pin{position:relative;display:grid;gap:14px;justify-items:center}
+.mapbox .pin svg{width:44px;height:44px;color:var(--peony)}
+@media (max-width:820px){.contact-grid{grid-template-columns:1fr}}
+
+.site-footer{border-top:1px solid var(--line);padding-block:32px;color:var(--muted);font-size:14px}
+.site-footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+
+.fab{position:fixed;right:calc(18px + env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:40;width:60px;height:60px;border-radius:50%;background:var(--peony);color:var(--peony-ink);display:none;place-items:center;box-shadow:0 10px 28px rgba(194,54,95,.35)}
+.fab svg{width:26px;height:26px}
+@media (max-width:820px){.fab{display:grid}}
+</style>
+
+</head>
+<body>
+
+<div class="demo"><div class="wrap">Демо-версия сайта для салона «Цветок подарок». Не официальный сайт.</div></div>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top" aria-label="Цветок подарок, на главную">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><g fill="var(--peony)"><ellipse cx="16" cy="9" rx="5" ry="8"/><ellipse cx="16" cy="23" rx="5" ry="8"/><ellipse cx="9" cy="16" rx="8" ry="5"/><ellipse cx="23" cy="16" rx="8" ry="5"/></g><circle cx="16" cy="16" r="4" fill="var(--leaf)"/></svg>
+      Цветок подарок
+    </a>
+    <ul class="menu" id="menu">
+      <li><a href="#assort">Ассортимент</a></li>
+      <li><a href="#order">Как заказать</a></li>
+      <li><a href="#reviews">Отзывы</a></li>
+      <li><a href="#faq">Вопросы</a></li>
+      <li><a href="#contacts">Контакты</a></li>
+    </ul>
+    <div style="display:flex;gap:6px;align-items:center">
+      <a class="btn btn-primary" href="#contacts" aria-label="Позвонить"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><span>Позвонить</span></a>
+      <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">Салон цветов на Уктусе · Екатеринбург</div>
+        <h1 style="margin-top:16px">Цветы рядом с домом. <em>Днём и ночью.</em></h1>
+        <p class="lead">Букеты, композиции и комнатные растения на Щербакова, 145в. Открыто круглосуточно, а с 9:00 до 21:00 привезём букет по Екатеринбургу.</p>
+        <div class="cta">
+          <a class="btn btn-primary" href="https://flowwow.com/shop/cvetok-podarok/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 17h4V5H2v12h3"/><path d="M20 17h2v-3.3a1 1 0 0 0-.2-.6L18.3 9H14v8h1"/><circle cx="7.5" cy="17.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>
+            Заказать доставку
+          </a>
+          <a class="btn btn-ghost" href="#contacts">Как нас найти</a>
+        </div>
+        <div class="facts">
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><b>24/7</b> без выходных</div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Щербакова, 145в, 1 этаж</div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></svg>Бесплатная парковка</div>
+        </div>
+      </div>
+      <div class="bloom" aria-hidden="true">
+        <!-- заменить на фото витрины или букета клиента -->
+        <canvas id="bloom"></canvas>
+        <div class="tag"><i></i>Сейчас открыто</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="night">
+    <div class="wrap night-grid">
+      <div class="clock" id="clock">03:00</div>
+      <div>
+        <h2>Забыли про годовщину? Мы открыты даже в три часа ночи</h2>
+        <p>Салон работает круглосуточно. Заходите после смены, по дороге из аэропорта или за минуту до праздника: флорист соберёт букет при вас.</p>
+      </div>
+    </div>
+  </div>
+
+  <section id="assort">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Ассортимент</div>
+        <h2>Что купить в «Цветок подарок»</h2>
+        <p>Собираем букеты из свежих цветов при вас и помогаем с выбором подарка к ним.</p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7.5a4.5 4.5 0 1 1 4.5 4.5M12 7.5A4.5 4.5 0 1 0 7.5 12M12 7.5V9m-4.5 3a4.5 4.5 0 1 0 4.5 4.5M7.5 12H9m7.5 0a4.5 4.5 0 1 1-4.5 4.5m4.5-4.5H15m-3 4.5V15"/><circle cx="12" cy="12" r="3"/></svg></div>
+          <h3>Авторские букеты</h3>
+          <p>Монобукеты и сборные, в романтичном французском стиле или строгие. Подберём под повод и бюджет.</p>
+          <div class="price">от [уточнить] ₽</div>
+        </article>
+        <article class="card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16l-1.5 9h-13z"/><path d="M8 11c0-3 1.5-5 4-6 2.5 1 4 3 4 6"/></svg></div>
+          <h3>Композиции в коробке</h3>
+          <p>Цветы во флористической губке, которые не нужно ставить в вазу. Удобно дарить на работе и в дорогу.</p>
+          <div class="price">от [уточнить] ₽</div>
+        </article>
+        <article class="card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 20h10l1-6H6z"/><path d="M12 14V9"/><path d="M12 9c0-3 2-5 5-5 0 3-2 5-5 5zM12 11c0-2.5-1.7-4-4-4 0 2.5 1.7 4 4 4z"/></svg></div>
+          <h3>Комнатные растения</h3>
+          <p>Цветущие и декоративно-лиственные растения в горшках. Подскажем, как поливать и где поставить.</p>
+          <div class="price">от [уточнить] ₽</div>
+        </article>
+        <article class="card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V10"/><path d="M12 10c-2-1-3-3-3-6 2 0 3 2 3 6zM12 10c2-1 3-3 3-6-2 0-3 2-3 6zM12 15c-2-.5-4-2-4.5-4.5 2 0 4 1.5 4.5 4.5zM12 15c2-.5 4-2 4.5-4.5-2 0-4 1.5-4.5 4.5z"/></svg></div>
+          <h3>Сухоцветы и искусственные цветы</h3>
+          <p>Букеты, которые стоят месяцами. Подходят для интерьера и для тех, кто не любит менять воду.</p>
+          <div class="price">от [уточнить] ₽</div>
+        </article>
+        <article class="card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="6"/><circle cx="7" cy="6" r="2.5"/><circle cx="17" cy="6" r="2.5"/><path d="M10 12h.01M14 12h.01M10.5 15.5c1 .7 2 .7 3 0"/></svg></div>
+          <h3>Мягкие игрушки</h3>
+          <p>Небольшой подарок к букету для ребёнка или любимого человека.</p>
+          <div class="price">от [уточнить] ₽</div>
+        </article>
+        <article class="card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="9" rx="6" ry="7"/><path d="M12 16l-1 2h2zM12 18c0 2-2 2-2 4"/></svg></div>
+          <h3>Воздушные шары</h3>
+          <p>Шары с гелием к букету на день рождения, выписку или 9 Мая.</p>
+          <div class="price">от [уточнить] ₽</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="why">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Почему к нам</div>
+        <h2>Удобно, когда цветочный в соседнем доме</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-item"><div class="big">24/7</div><h3>Без выходных</h3><p>Открыто круглосуточно, включая праздники.</p></div>
+        <div class="why-item"><div class="big">9–21</div><h3>Доставка</h3><p>Привезём букет по Екатеринбургу с 9:00 до 21:00.</p></div>
+        <div class="why-item"><div class="big">53</div><h3>Места для парковки</h3><p>Бесплатная парковка у входа. Остановка «Артиллерийский институт» в 250 м.</p></div>
+        <div class="why-item"><div class="big">QR</div><h3>Любая оплата</h3><p>Наличные, банковская карта или оплата по QR-коду.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="order">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Как заказать</div>
+        <h2>Букет с доставкой за три шага</h2>
+      </div>
+      <ol class="steps">
+        <li><h3>Выберите букет</h3><p>На витрине онлайн или расскажите флористу повод и бюджет.</p></li>
+        <li><h3>Оформите заказ</h3><p>Укажите адрес, время и текст открытки. Оплатить можно онлайн.</p></li>
+        <li><h3>Получатель счастлив</h3><p>Курьер привезёт букет в выбранное время с 9:00 до 21:00.</p></li>
+      </ol>
+      <div class="cta" style="margin-top:36px">
+        <a class="btn btn-primary" href="https://flowwow.com/shop/cvetok-podarok/" target="_blank" rel="noopener">Открыть витрину</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="reviews" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Отзывы</div>
+        <h2>Что говорят соседи</h2>
+      </div>
+      <div class="reviews">
+        <!-- отзывы пересказаны по карточке 2ГИС; перед запуском согласовать с владельцем -->
+        <blockquote><p>Живу через дорогу и постоянно беру букеты здесь. Собирают красиво, цветы хорошие.</p><footer><b>Иван Т.</b> · 2ГИС</footer></blockquote>
+        <blockquote><p>Флорист Юлия не просто собрала букет, а подобрала цветы в романтичном французском стиле.</p><footer><b>Оксана А.</b> · 2ГИС</footer></blockquote>
+        <blockquote><p>Муж регулярно приносит цветы отсюда. Всегда помогают с выбором, букеты стоят от пяти дней.</p><footer><b>Анастасия Б.</b> · 2ГИС</footer></blockquote>
+      </div>
+      <p class="more"><a href="https://2gis.ru/ekaterinburg/firm/70000001101464545/tab/reviews" target="_blank" rel="noopener">Все отзывы в 2ГИС →</a></p>
+    </div>
+  </section>
+
+  <section id="faq" class="why">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Вопросы</div>
+        <h2>Частые вопросы</h2>
+      </div>
+      <div class="faq">
+        <details><summary>Вы правда работаете ночью?</summary><p>Да, салон открыт круглосуточно и без выходных. Ночью можно прийти и собрать букет при вас.</p></details>
+        <details><summary>Как сделать, чтобы букет стоял дольше?</summary><p>Подрежьте стебли наискосок острым ножом, уберите листья, которые окажутся в воде, и меняйте воду каждый день. Не ставьте букет рядом с батареей и фруктами. Флорист подскажет уход для конкретных цветов.</p></details>
+        <details><summary>Можно заказать доставку?</summary><p>Да, с 9:00 до 21:00 по Екатеринбургу. Заказ оформляется на нашей онлайн-витрине. Стоимость доставки [уточнить].</p></details>
+        <details><summary>Как оплатить?</summary><p>В салоне принимаем наличные, банковские карты и оплату по QR-коду. Доставка оплачивается онлайн при оформлении.</p></details>
+        <details><summary>Где припарковаться?</summary><p>У дома бесплатная парковка на 53 места. Ближайшая остановка общественного транспорта «Артиллерийский институт», 3 минуты пешком.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacts">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Контакты</div>
+        <h2>Как нас найти</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="c-card">
+          <div class="c-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><div><small>Адрес</small><b>Екатеринбург, ул. Щербакова, 145в, 1 этаж</b><small>Уктус, Чкаловский район</small></div></div>
+          <div class="c-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><div><small>Режим работы</small><b>Круглосуточно, без выходных</b><small>Доставка с 9:00 до 21:00</small></div></div>
+          <div class="c-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><div><small>Телефон</small><b>+7 900 044-••-••</b> <span class="todo">уточнить</span></div></div>
+          <div class="c-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.6A8.4 8.4 0 1 1 21 11.5z"/></svg><div><small>WhatsApp / Telegram</small><b>[уточнить]</b></div></div>
+          <div class="cta">
+            <a class="btn btn-primary" href="https://2gis.ru/ekaterinburg/directions/points/%7C60.670088%2C56.767814%3B70000001101464545" target="_blank" rel="noopener">Построить маршрут</a>
+            <a class="btn btn-ghost" href="https://yandex.ru/maps/?pt=60.670088,56.767814&z=17&l=map" target="_blank" rel="noopener">Яндекс Карты</a>
+          </div>
+        </div>
+        <div class="mapbox">
+          <!-- на хостинге заменить на виджет карты: <iframe src="https://yandex.ru/map-widget/v1/?ll=60.670088%2C56.767814&z=16&pt=60.670088,56.767814,pm2rdm" ...> -->
+          <svg class="grid" viewBox="0 0 400 320" preserveAspectRatio="none" aria-hidden="true"><g stroke="currentColor" stroke-width="10" fill="none"><path d="M-10 90 L410 60"/><path d="M-10 230 L410 250"/><path d="M120 -10 L150 330"/><path d="M300 -10 L270 330"/></g><g stroke="currentColor" stroke-width="3" fill="none"><path d="M-10 160 L410 150"/><path d="M60 -10 L70 330"/><path d="M210 -10 L215 330"/></g></svg>
+          <div class="pin">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a8 8 0 0 0-8 8c0 6 8 12 8 12s8-6 8-12a8 8 0 0 0-8-8zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
+            <b>Щербакова, 145в</b>
+            <a class="btn btn-ghost" href="https://2gis.ru/ekaterinburg/firm/70000001101464545" target="_blank" rel="noopener">Открыть в 2ГИС</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© 2026 «Цветок подарок», салон цветов. Екатеринбург</span>
+    <span>Реквизиты: [уточнить]</span>
+  </div>
+</footer>
+
+<a class="fab" href="#contacts" aria-label="Позвонить"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></a>
+
+<script>
+// mobile menu
+(function(){
+  var b=document.getElementById('burger'),m=document.getElementById('menu');
+  b.addEventListener('click',function(){var o=m.classList.toggle('open');b.setAttribute('aria-expanded',o)});
+  m.addEventListener('click',function(e){if(e.target.tagName==='A'){m.classList.remove('open');b.setAttribute('aria-expanded','false')}});
+})();
+// night clock: shows real current time
+(function(){
+  var c=document.getElementById('clock');
+  function t(){var d=new Date();c.textContent=String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0')}
+  t();setInterval(t,30000);
+})();
+// generative peony on canvas
+(function(){
+  var cv=document.getElementById('bloom');if(!cv)return;
+  var ctx=cv.getContext('2d');
+  function css(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim()}
+  function draw(){
+    var r=cv.getBoundingClientRect(),dpr=Math.min(window.devicePixelRatio||1,2);
+    cv.width=r.width*dpr;cv.height=r.height*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);
+    var w=r.width,h=r.height,cx=w*.54,cy=h*.46,S=Math.min(w,h);
+    ctx.clearRect(0,0,w,h);
+    var peony=css('--peony'),leaf=css('--leaf');
+    // stems & leaves
+    ctx.strokeStyle=leaf;ctx.lineWidth=S*.018;ctx.lineCap='round';
+    ctx.beginPath();ctx.moveTo(cx,cy);ctx.quadraticCurveTo(cx-S*.05,cy+S*.3,cx-S*.12,h+10);ctx.stroke();
+    ctx.fillStyle=leaf;
+    [[-.16,.3,-.6],[.08,.36,.5]].forEach(function(l){
+      ctx.save();ctx.translate(cx+S*l[0],cy+S*l[1]);ctx.rotate(l[2]);
+      ctx.beginPath();ctx.ellipse(0,0,S*.12,S*.04,0,0,Math.PI*2);ctx.fill();ctx.restore();
+    });
+    // petals in rings
+    var rings=[[11,.30,.10,.22],[9,.22,.085,.38],[8,.15,.07,.55],[6,.08,.05,.8]];
+    rings.forEach(function(rg,ri){
+      for(var i=0;i<rg[0];i++){
+        var a=i/rg[0]*Math.PI*2+ri*.35;
+        ctx.save();ctx.translate(cx+Math.cos(a)*S*rg[1]*.45,cy+Math.sin(a)*S*rg[1]*.45);ctx.rotate(a+Math.PI/2);
+        ctx.globalAlpha=rg[3];ctx.fillStyle=peony;
+        ctx.beginPath();ctx.ellipse(0,0,S*rg[2],S*rg[1]*.55,0,0,Math.PI*2);ctx.fill();ctx.restore();
+      }
+    });
+    ctx.globalAlpha=1;ctx.fillStyle=peony;ctx.beginPath();ctx.arc(cx,cy,S*.035,0,Math.PI*2);ctx.fill();
+  }
+  draw();window.addEventListener('resize',draw);
+  if(window.matchMedia){var mq=matchMedia('(prefers-color-scheme: dark)');mq.addEventListener&&mq.addEventListener('change',draw)}
+  new MutationObserver(draw).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+})();
+</script>
+</body>
+</html>
